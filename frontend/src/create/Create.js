@@ -98,15 +98,6 @@ const Create = () => {
           onChange={formik.handleChange}
           value={formik.values.number}
         />
-
-      <label htmlFor="can_reply">Can Reply</label>
-        <input
-          id="can_reply"
-          name="can_reply"
-          type="checkbox"
-          onChange={formik.handleChange}
-          value={formik.values.can_reply}
-        />
   
         <button type="submit">Submit</button>
       </form>
