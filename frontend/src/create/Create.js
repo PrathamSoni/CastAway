@@ -8,7 +8,6 @@ import Col from 'react-bootstrap/Col';
 
 import './Create.scss';
 
-
 const Create = () => {
   const formik = useFormik({
     initialValues: {

@@ -45,7 +45,33 @@ class BottleViewset(viewsets.ModelViewSet):
         return Response(data)
 
     def list(self, request):
-        page = self.paginator.paginate_queryset(Message.objects.filter(recipient=None, opened=False), self.request)
+        page = self.paginator.paginate_queryset(Message.objects.filter(dm=False, opened=False, ), self.request)
+        if page is not None:
+            serializer = MessageSerializer(page, context={'request': request}, many=True)
+            data = serializer.data
+            for datum in data:
+                datum.pop("content")
+                datum.pop("sender")
+            return self.paginator.get_paginated_response(data)
+        else:
+            return
+
+    @action(detail=False)
+    def sent(self, request):
+        page = self.paginator.paginate_queryset(Message.objects.filter(sender=request.user), self.request)
+        if page is not None:
+            serializer = MessageSerializer(page, context={'request': request}, many=True)
+            data = serializer.data
+            for datum in data:
+                datum.pop("content")
+                datum.pop("sender")
+            return self.paginator.get_paginated_response(data)
+        else:
+            return None
+
+    @action(detail=False)
+    def recieved(self, request):
+        page = self.paginator.paginate_queryset(Message.objects.filter(recipient=request.user), self.request)
         if page is not None:
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             data = serializer.data
@@ -69,13 +95,18 @@ class BottleViewset(viewsets.ModelViewSet):
             elif not parent.can_reply:
                 return HttpResponseBadRequest()
             else:
-                print("parent")
-
                 data['can_reply'] = True
                 data['index'] = parent.index + 1
                 data['recipient'] = parent.sender.id
                 if parent.recipient is None:
                     data['can_reply'] = False
+                data['dm'] = parent.dm
+
+        else:
+            if "recipient" in data.keys() and data["recipient"] is not None and data["recipient"] != "":
+                data['dm'] = True
+            else:
+                data['dm'] = False
 
         data['sender'] = request.user.id
 
