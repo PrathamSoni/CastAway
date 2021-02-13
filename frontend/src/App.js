@@ -6,8 +6,8 @@ import Create from './create/Create';
 import Sent from './sent/Sent';
 import Recieved from './recieved/Recieved';
 import About from './about/About';
-import Login from './login/Login';
-import Signup from './signup/Signup';
+import Login from './auth/Login';
+import Signup from './auth/Signup';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -31,22 +31,24 @@ const App = () => {
     { title: 'About', path: 'About', component: About, id: 4 },
   ];
 
-  
   console.log(token);
-  if(!token) {
+  if (!token) {
     return (
       <>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/signup">
-          <Signup/>
-        </Route>
-        <Route path="/">
-          <Login setToken={setToken} />
-        </Route>
-      </Switch>
-    </BrowserRouter>
-    </>);
+        <BrowserRouter>
+          <Navbar />
+          <Switch>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/">
+              <Login setToken={setToken} />
+            </Route>
+          </Switch>
+          <Footer />
+        </BrowserRouter>
+      </>
+    );
   }
 
   return (
