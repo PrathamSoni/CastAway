@@ -31,8 +31,6 @@ const App = () => {
     { title: 'About', path: 'About', component: About, id: 4 },
   ];
 
-  
-  console.log(token);
   if(!token) {
     return (
       <>
