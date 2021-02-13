@@ -13,8 +13,8 @@ const About = () => {
         <Col> <h1 className='company-name'>CastAway</h1> </Col>
       </Row>
       <Row>
-        <Col> <h2> About CastAway </h2> </Col>
-        <Col> <h2> The Team </h2> </Col>
+        <Col> <h2 className='sub-heading'> About CastAway </h2> </Col>
+        <Col> <h2 className='sub-heading'> The Team </h2> </Col>
       </Row>
       <Row>
         <Col>
@@ -23,8 +23,14 @@ const About = () => {
           </p>
         </Col>
         <Col>
-          <Row> </Row>
-          <Row> </Row>
+          <Row>
+            <h3 className="names"> Devarth Iyer </h3>
+            <h3 className="names"> Samarth Goel </h3>
+          </Row>
+          <Row>
+            <h3 className="names"> Prathman Soni </h3>
+            <h3 className="names"> Naomi Liu </h3>
+          </Row>
         </Col>
       </Row>
     </Container>
