@@ -7,3 +7,4 @@ djangorestframework-simplejwt==4.2.0
 pytz==2021.1
 sqlparse==0.4.1
 PyJWT==1.7.1
+django-cron==0.5.1
