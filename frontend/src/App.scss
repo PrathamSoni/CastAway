@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.body {
+  height: 80vh;
+
+  .left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid green;
+    height: 80vh;
+
+    .btn {
+      width: 80%;
+      margin: 1rem 0;
+    }
+  }
+
+  .right-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid green;
+    height: 80vh;
+  }
+}
