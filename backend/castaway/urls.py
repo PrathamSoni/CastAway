@@ -18,4 +18,12 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('api/', include(api)),
+
+    # auth
+    path('api/signup/', views.SignUpView.as_view()),
+    path('api/login/', views.LogInView.as_view()),
+    path('api/token/verify/', TokenVerifyView.as_view()),
+    path('api/token/refresh/', TokenRefreshSlidingView.as_view()),
 ]
