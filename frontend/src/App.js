@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Map from './map/Map';
 import Create from './create/Create';
 import Sent from './sent/Sent';
 import Recieved from './recieved/Recieved';
 import About from './about/About';
+import Login from './auth/Login';
+import Signup from './auth/Signup';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -18,6 +21,7 @@ import './App.scss';
 
 const App = () => {
   const [page, setPage] = useState(Map);
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
   const pages = [
     { title: 'Map', path: 'map', component: Map, id: 0 },
@@ -26,6 +30,30 @@ const App = () => {
     { title: 'Recieved', path: 'recieved', component: Recieved, id: 3 },
     { title: 'About', path: 'About', component: About, id: 4 },
   ];
+
+<<<<<<< HEAD
+  if(!token) {
+=======
+  console.log(token);
+  if (!token) {
+>>>>>>> 343062f2becb546f9d4bcf2977b5c8aa798b9579
+    return (
+      <>
+        <BrowserRouter>
+          <Navbar />
+          <Switch>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/">
+              <Login setToken={setToken} />
+            </Route>
+          </Switch>
+          <Footer />
+        </BrowserRouter>
+      </>
+    );
+  }
 
   return (
     <div className="App">

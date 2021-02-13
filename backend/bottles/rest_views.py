@@ -54,6 +54,32 @@ class BottleViewset(viewsets.ModelViewSet):
                 datum.pop("sender")
             return self.paginator.get_paginated_response(data)
         else:
+            return
+
+    @action(detail=False)
+    def sent(self, request):
+        page = self.paginator.paginate_queryset(Message.objects.filter(sender=request.user), self.request)
+        if page is not None:
+            serializer = MessageSerializer(page, context={'request': request}, many=True)
+            data = serializer.data
+            for datum in data:
+                datum.pop("content")
+                datum.pop("sender")
+            return self.paginator.get_paginated_response(data)
+        else:
+            return None
+
+    @action(detail=False)
+    def recieved(self, request):
+        page = self.paginator.paginate_queryset(Message.objects.filter(recipient=request.user), self.request)
+        if page is not None:
+            serializer = MessageSerializer(page, context={'request': request}, many=True)
+            data = serializer.data
+            for datum in data:
+                datum.pop("content")
+                datum.pop("sender")
+            return self.paginator.get_paginated_response(data)
+        else:
             return None
 
     def create(self, request):
