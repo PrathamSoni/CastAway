@@ -16,3 +16,4 @@ class Message(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     can_reply = models.BooleanField(default=True)
     index = models.IntegerField(default=0)
+    dm = models.BooleanField(default=False)

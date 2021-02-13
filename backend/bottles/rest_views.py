@@ -31,7 +31,7 @@ class BottleViewset(viewsets.ModelViewSet):
             if request.user != message.recipient and request.user != message.sender:
                 return HttpResponseBadRequest()
 
-        if request.user != message.sender:
+        elif request.user != message.sender:
             message.opened = True
             message.recipient = request.user
             message.save()
@@ -39,7 +39,7 @@ class BottleViewset(viewsets.ModelViewSet):
         serializer = MessageSerializer(message, context={'request': request})
 
         data = serializer.data
-        if data["recipient"] is None:
+        if not data["dm"]:
             data.pop("sender")
 
         return Response(data)
