@@ -23,7 +23,6 @@ const App = () => {
   const [page, setPage] = useState(0);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  console.log(token);
   if (!token) {
     return (
       <>
