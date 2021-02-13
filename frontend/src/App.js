@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 import Map from './map/Map';
 import Create from './create/Create';
@@ -20,16 +20,7 @@ import Button from 'react-bootstrap/Button';
 import './App.scss';
 
 const App = () => {
-  const [page, setPage] = useState(Map);
   const [token, setToken] = useState(localStorage.getItem('token'));
-
-  const pages = [
-    { title: 'Map', path: 'map', component: Map, id: 0 },
-    { title: 'Create', path: 'create', component: Create, id: 1 },
-    { title: 'Sent', path: 'sent', component: Sent, id: 2 },
-    { title: 'Recieved', path: 'recieved', component: Recieved, id: 3 },
-    { title: 'About', path: 'About', component: About, id: 4 },
-  ];
 
   console.log(token);
   if (!token) {
@@ -51,25 +42,46 @@ const App = () => {
     );
   }
 
+  const pages = [
+    { title: 'Map', path: 'map', component: Map, id: 0 },
+    { title: 'Create', path: 'create', component: Create, id: 1 },
+    { title: 'Sent', path: 'sent', component: Sent, id: 2 },
+    { title: 'Recieved', path: 'recieved', component: Recieved, id: 3 },
+    { title: 'About', path: 'About', component: About, id: 4 },
+  ];
+
   return (
-    <div className="App">
-      <Navbar />
-      <Container fluid className="body">
-        <Row>
-          <Col xs={4} className="left-col">
-            {pages.map(({ title, component }) => (
-              <Button onClick={() => setPage(component)}>
-                <h3>{title}</h3>
-              </Button>
-            ))}
-          </Col>
-          <Col xs={8} className="right-col">
-            {page}
-          </Col>
-        </Row>
-      </Container>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <Container fluid className="body">
+          <Row>
+            <Col xs={4} className="left-col">
+              {pages.map(({ title, path }) => (
+                <Link to={`/${path}`} className="btn-link">
+                  <Button>
+                    <h3>{title}</h3>
+                  </Button>
+                </Link>
+              ))}
+            </Col>
+            <Col xs={8} className="right-col">
+              <Switch>
+                {pages.map((page) => (
+                  <Route path={`/${page.path}`} id={page.id}>
+                    {page.component}
+                  </Route>
+                ))}
+                <Route path="/">
+                  <Map />
+                </Route>
+              </Switch>
+            </Col>
+          </Row>
+        </Container>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 };
 

@@ -1,4 +1,11 @@
 .footer {
   height: 10vh;
   border: 1px solid blue;
+  .row {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid blue;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
