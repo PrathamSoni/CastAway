@@ -92,7 +92,7 @@ if os.getenv('GAE_APPLICATION', None):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/[YOUR-CONNECTION-NAME]',
+            'HOST': '/cloudsql/castaway-304704:us-central1:castaway',
             'USER': '[YOUR-USERNAME]',
             'PASSWORD': '[YOUR-PASSWORD]',
             'NAME': '[YOUR-DATABASE]',
@@ -110,9 +110,9 @@ else:
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '127.0.0.1',
             'PORT': '3306',
-            'NAME': '[YOUR-DATABASE]',
-            'USER': '[YOUR-USERNAME]',
-            'PASSWORD': '[YOUR-PASSWORD]',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
         }
     }
 # [END db_setup]
