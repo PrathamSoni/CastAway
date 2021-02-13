@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from pk_gen.app import pk_gen
 
 # Create your models here.
 
@@ -17,3 +18,8 @@ class Message(models.Model):
     can_reply = models.BooleanField(default=True)
     index = models.IntegerField(default=0)
     dm = models.BooleanField(default=False)
+    id = models.CharField(max_length=8, primary_key=True)
+
+    def save(self, *args,**kwargs):
+        self.pk = pk_gen(Message.objects.all(), 8)
+        return super(Message, self).save(*args, **kwargs)

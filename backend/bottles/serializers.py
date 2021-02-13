@@ -12,6 +12,7 @@ logger = logging.getLogger('testlogger')
 
 
 class MessageSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(required=False)
     class Meta:
         model = Message
         fields = '__all__'
