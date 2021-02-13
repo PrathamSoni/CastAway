@@ -1,25 +1,68 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function Map() {
   return (
-    <div className="App">
+    <div className="Map">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
 }
 
+function Create() {
+  return (
+    <div className="Create">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+
+        </p>
+      </header>
+    </div>
+  );
+}
+
+function Sent() {
+  return (
+    <div className="Sent">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+
+        </p>
+      </header>
+    </div>
+  );
+}
+
+function Received() {
+  return (
+    <div className="Received">
+      <header className=" ">
+        <img src={ } className="App-logo" alt="logo" />
+        <p>
+
+        </p>
+      </header>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div className="About">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+
+        </p>
+      </header>
+    </div>
+  );
+}
 export default App;
