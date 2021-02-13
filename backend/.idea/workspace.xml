@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="662c66de-228d-407b-abe9-6b060b3d16dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bottles/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bottles/rest_views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bottles/router.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bottles/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bottles/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/castaway/api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bottles/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/bottles/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bottles/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bottles/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bottles/rest_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bottles/rest_views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bottles/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bottles/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/castaway/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/castaway/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/castaway/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/castaway/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
@@ -16,6 +17,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -34,6 +42,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="B:\Users\psoni\Projects\treehacks\CastAway\backend\castaway" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="B:\Users\psoni\Projects\treehacks\CastAway\backend\bottles" />
     </key>
@@ -89,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613194539985</updated>
-      <workItem from="1613194541568" duration="4220000" />
+      <workItem from="1613194541568" duration="4831000" />
     </task>
     <servers />
   </component>

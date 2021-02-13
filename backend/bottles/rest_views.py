@@ -8,12 +8,11 @@ from .serializers import MessageSerializer
 from django.shortcuts import get_object_or_404, Http404, HttpResponse
 
 from django.contrib.auth.models import User
-from machina.apps.forum_permission.viewmixins import PermissionRequiredMixinViewset
 from rest_framework.permissions import IsAuthenticated
 from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from rest_framework import viewsets
 
-from .model import Message
+from .models import Message
 
 import logging
 
@@ -24,13 +23,10 @@ import logging
 logger = logging.getLogger('testlogger')
 
 
-class BottleViewset(PermissionRequiredMixinViewset):
+class BottleViewset(viewsets.ModelViewSet):
     queryset = Message.objects.none()
     paginator = LimitOffsetPagination()
-
-    permission_classes_by_action = {'retrieve': [IsAuthenticated],
-                                    'list': [IsAuthenticated],
-                                    }
+    serializer_class=MessageSerializer
 
     def retrieve(self, request, pk=None):
         queryset = Message.objects.all()
