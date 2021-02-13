@@ -1,0 +1,62 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="4">
+            <item index="0" class="java.lang.String" itemvalue="python-dotenv" />
+            <item index="1" class="java.lang.String" itemvalue="sklearn" />
+            <item index="2" class="java.lang.String" itemvalue="argparse" />
+            <item index="3" class="java.lang.String" itemvalue="easy-parallel" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E101" />
+          <option value="E402" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+          <option value="N803" />
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="librosa" />
+          <option value="soundfile" />
+          <option value="splitfolders" />
+          <option value="sounddevice" />
+          <option value="models.models.features" />
+          <option value="labels" />
+          <option value="file" />
+          <option value="utils.augment.*" />
+          <option value="models.data.Split" />
+          <option value="augment" />
+          <option value="data.get_data_loader" />
+          <option value="data.get_dataset" />
+          <option value="data.*" />
+          <option value="loss" />
+          <option value="src.models.vs_concat" />
+          <option value="src.models.GVP" />
+          <option value="src.models.GVPLayerNorm" />
+          <option value="src.models.GVPDropout" />
+          <option value="src.models.merge" />
+          <option value="src.train_cpd.cath_dataset" />
+          <option value="src.train_cpd.CPDModel" />
+          <option value="src.models.torch_geometric" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

@@ -131,5 +131,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#idea
-backend/.idea/
+.DS_Store
+/Pipfile
+.idea
