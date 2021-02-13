@@ -7,7 +7,9 @@ from django.utils.encoding import force_str
 from .models import Message
 
 import logging
+
 logger = logging.getLogger('testlogger')
+
 
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
