@@ -13,3 +13,7 @@ class Message(models.Model):
     long = models.DecimalField(max_digits=20, decimal_places=15)
     opened = models.BooleanField()
     tta = models.DurationField()
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    can_reply = models.BooleanField(default=True)
+    index = models.IntegerField(default=0)
+    dm = models.BooleanField(default=False)
