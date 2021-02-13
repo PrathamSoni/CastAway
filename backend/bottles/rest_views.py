@@ -35,7 +35,7 @@ class BottleViewset(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def list(self, request):
-        page = self.paginator.paginate_queryset(self.get_queryset(), self.request)
+        page = self.paginator.paginate_queryset(Message.objects.all(), self.request)
         if page is not None:
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             return self.paginator.get_paginated_response(serializer.data)
