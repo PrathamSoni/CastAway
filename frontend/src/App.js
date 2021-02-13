@@ -31,12 +31,7 @@ const App = () => {
     { title: 'About', path: 'About', component: About, id: 4 },
   ];
 
-<<<<<<< HEAD
   if(!token) {
-=======
-  console.log(token);
-  if (!token) {
->>>>>>> 343062f2becb546f9d4bcf2977b5c8aa798b9579
     return (
       <>
         <BrowserRouter>
