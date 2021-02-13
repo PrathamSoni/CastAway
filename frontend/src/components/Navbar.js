@@ -11,9 +11,9 @@ const SiteNavbar = () => {
       <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
+        <Nav className="ml-auto nav">
+          <Nav.Link href="#home">Sign Up</Nav.Link>
+          <Nav.Link href="#link">Login</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
