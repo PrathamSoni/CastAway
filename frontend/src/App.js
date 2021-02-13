@@ -19,10 +19,11 @@ import Button from 'react-bootstrap/Button';
 
 import './App.scss';
 
+
 const App = () => {
   const [page, setPage] = useState(0);
   const [token, setToken] = useState(localStorage.getItem('token'));
-
+  require('dotenv').config();
   if (!token) {
     return (
       <>

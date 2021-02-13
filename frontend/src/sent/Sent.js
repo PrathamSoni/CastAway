@@ -9,9 +9,10 @@ import './Sent.scss';
 
 const Sent = () => {
   const [messages,setMessages] = useState([]);
+  const header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
 
   useEffect(() => {
-    Axios.get("https://castaway-304704.uc.r.appspot.com/api/bottle/sent").then((res) => {
+    Axios.get("https://castaway-304704.uc.r.appspot.com/api/bottle/sent",{headers:header}).then((res) => {
       setMessages(res.data.results);
     });
   },[]);
