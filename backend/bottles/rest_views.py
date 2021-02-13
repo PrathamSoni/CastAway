@@ -58,7 +58,8 @@ class BottleViewset(viewsets.ModelViewSet):
 
     def create(self, request):
         data = request.data
-        data._mutable = True
+        if not isinstance(data, dict):
+            data._mutable = True
         parent = None
         if "parent" in data.keys() and data["parent"] is not None and data["parent"] != "":
             parent = Message.objects.get(id=data["parent"])
