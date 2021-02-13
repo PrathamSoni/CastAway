@@ -26,7 +26,7 @@ logger = logging.getLogger('testlogger')
 class BottleViewset(viewsets.ModelViewSet):
     queryset = Message.objects.none()
     paginator = LimitOffsetPagination()
-    serializer_class=MessageSerializer
+    serializer_class = MessageSerializer
 
     def retrieve(self, request, pk=None):
         queryset = Message.objects.all()
