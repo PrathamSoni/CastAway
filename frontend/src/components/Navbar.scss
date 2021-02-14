@@ -2,7 +2,26 @@
   height: 10vh;
   border: 1px solid blue;
 
+  .brand-container {
+    border: 1px solid blue;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    img {
+      height: 100%;
+      margin-right: 0.5rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+    }
+  }
+
   .nav {
     border: 1px solid blue;
+
+    p {
+      font-size: 1.4rem;
+    }
   }
 }

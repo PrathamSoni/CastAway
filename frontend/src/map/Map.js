@@ -11,8 +11,6 @@ import Col from 'react-bootstrap/Col';
 import './Map.scss';
 import Marker from './Marker';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 const Map = () => {
 
   const [bottles, setBottles] = useState([]);

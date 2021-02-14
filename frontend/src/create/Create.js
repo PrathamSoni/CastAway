@@ -1,19 +1,31 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Axios from 'axios';
 import { useFormik } from 'formik';
+import GoogleMapReact from 'google-map-react';
+
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import bottle from "./bottle.png"
+
 import './Create.scss';
 
+
 const Create = () => {
+
+  const [markerLat, setMarkerLat] = useState(0);
+  const [markerLng, setMarkerLng] = useState(0);
+  const [zoom, setZoom] = useState(0);
+
+  const AnyReactComponent = () => <img style={{width:`${zoom/2}vw`}} src={bottle}/>;
+
   const header = {Authorization: `Bearer ${localStorage.getItem("token")}`};
   const formik = useFormik({
     initialValues: {
       content: '',
-      recipient: '',
+      recipient: 0,
       lat:0,
       long:0,
       can_reply:false,
@@ -25,10 +37,7 @@ const Create = () => {
          recipient:values.recipient,
          lat:values.lat,
          long:values.long,
-         dm: (!!values.recipient),
          tta:values.tta,
-         index: 0,
-         opened: false,
          canReply:values.canReply
         },{headers:header}
            ).then((res) => {
@@ -36,6 +45,14 @@ const Create = () => {
         });
     },
   });
+
+  const updateMarker = ({x, y, lat, lng, event}) => {
+    setMarkerLat(lat);
+    setMarkerLng(lng);
+  }
+  const updateZoom = ({center, zoom}) => {
+    setZoom(zoom);
+  };
 
   return (
     <Container fluid className="create-page">
@@ -56,7 +73,7 @@ const Create = () => {
         <input
           id="recipient"
           name="recipient"
-          type="text"
+          type="number"
           onChange={formik.handleChange}
           value={formik.values.recipient}
         />
@@ -102,6 +119,19 @@ const Create = () => {
         <button type="submit">Submit</button>
       </form>
       </>
+        <div style={{ height: '75vh', width: '100%' }}>
+      <GoogleMapReact
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_API }}
+          defaultCenter={{lat: 0,
+            lng: 0}}
+          defaultZoom={0}
+          onChange={updateZoom}
+          onClick={updateMarker}
+        >
+          <AnyReactComponent lat={markerLat} lng={markerLng}/>
+        </GoogleMapReact>
+        </div>
+
     </Container>
   );
 };

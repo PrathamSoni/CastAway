@@ -9,7 +9,12 @@ const Footer = () => {
   return (
     <Container fluid className="footer">
       <Row>
-        <p>Castaway</p>
+        <p>
+          Made with ❤️ at{' '}
+          <a href="https://www.treehacks.com/" target="_blank" rel="noreferrer">
+            TreeHacks
+          </a>
+        </p>
       </Row>
     </Container>
   );
