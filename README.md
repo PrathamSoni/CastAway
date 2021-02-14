@@ -1,5 +1,4 @@
-# CastAway
-
+![logo](logo2.png)
 ## Inspiration
 When you think back to the earliest forms of communication— people would send out messages in bottles just for the sake of potentially reaching someone on a completely different walk of life than them. 
 Taking this concept as inspiration, our team wanted to go back to these roots of social connection. 
