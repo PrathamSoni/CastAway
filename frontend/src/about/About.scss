@@ -1,24 +1,44 @@
 .about-page {
-  h2 {
-    font-size: 2.4rem;
-  }
-
-  .body {
+  .logo {
+    height: 5rem;
     display: flex;
-    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 2rem;
+    h1 {
+      font-size: 3.6rem;
+    }
+    img {
+      height: 100%;
+    }
   }
 
-  .left-col {
-    border: 1px solid pink;
-    padding-right: 15px;
+  h2 {
+    font-size: 2.8rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
 
-  .right-col {
+  .about-left-col {
+    width: 100%;
+    padding: 0 15px;
+
+    p {
+      width: 100%;
+      font-size: 1.6rem;
+      color: #000000;
+      padding: 0 30px;
+    }
+  }
+
+  .about-right-col {
     display: flex;
     flex-direction: column;
-    border: 1px solid pink;
     .person-col {
       margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       h3 {
         margin-top: 0.5rem;
