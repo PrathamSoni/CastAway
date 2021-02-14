@@ -34,6 +34,22 @@ const Recieved = () => {
     onOpen();
   };
 
+  const submitReply = (replyText) => {
+    Axios.post('https://castaway-304704.uc.r.appspot.com/api/bottle/',
+    {
+      content: replyText,
+      parent: message.id,
+      lat: 0,
+      long: 0,
+      tta: 0,
+      opened: false,
+    }, {
+      headers: header,
+    }).then((res) => {
+        message.can_reply = false;
+    });
+  };
+
   let display = messages.map((element) => {
     return (
       <Col xs={1}>
@@ -60,6 +76,7 @@ const Recieved = () => {
           title={`Message from ${parseDate(message.created)}`}
           body={message.content}
           reply={message.can_reply}
+          submitReply={submitReply}
         />
       )}
     </Container>
