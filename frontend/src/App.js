@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Map from './map/Map';
 import Create from './create/Create';
@@ -18,10 +18,19 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 import './App.scss';
+import './Page.scss';
 
 const App = () => {
   const [page, setPage] = useState(0);
   const [token, setToken] = useState(localStorage.getItem('token'));
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      localStorage.setItem('lat', position.coords.latitude);
+      localStorage.getItem('lng', position.coords.longitude);
+    });
+  }, []);
+
   require('dotenv').config();
   if (!token) {
     return (
