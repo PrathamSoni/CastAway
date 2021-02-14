@@ -15,9 +15,9 @@ const About = () => {
   return (
     <Container fluid className="about-page page">
       <Row>
-        <Col xs={7} className='left-column'>
+        <Col xs={7} className="left-col">
           <Row>
-            <h1 className="heading">About CastAway</h1>
+            <h2 className="heading">About CastAway</h2>
           </Row>
           <Row>
             <p className="lit">
@@ -33,26 +33,26 @@ const About = () => {
             </p>
           </Row>
         </Col>
-        <Col xs={5} className='right-column'>
+        <Col xs={5} className="right-col">
           <Row>
             <h2 className="sub-heading">The Team</h2>
           </Row>
           <Row>
-            <Col>
+            <Col className="person-col">
               <img src={Dev} alt="Devrath Iyer" />
               <h3 className="names">Devrath Iyer</h3>
             </Col>
-            <Col>
+            <Col className="person-col">
               <img src={Samarth} alt="Samarth Goel" />
               <h3 className="names">Samarth Goel</h3>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="person-col">
               <img src={Prath} alt="Prathman Soni" />
               <h3 className="names">Prathman Soni</h3>
             </Col>
-            <Col>
+            <Col className="person-col">
               <img src={Naomi} alt="Naomi Liu" />
               <h3 className="names">Naomi Liu</h3>
             </Col>

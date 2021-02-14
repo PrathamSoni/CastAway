@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Map from './map/Map';
 import Create from './create/Create';
 import Sent from './sent/Sent';
-import Recieved from './recieved/Recieved';
+import Received from './received/Received';
 import About from './about/About';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
@@ -29,7 +29,7 @@ const App = () => {
       localStorage.setItem('lat', position.coords.latitude);
       localStorage.getItem('lng', position.coords.longitude);
     });
-  },[]);
+  }, []);
 
   require('dotenv').config();
   if (!token) {
@@ -55,7 +55,7 @@ const App = () => {
     { title: '🗺️ Map', path: 'map', component: <Map />, id: 0 },
     { title: '✒️ Create', path: 'create', component: <Create />, id: 1 },
     { title: '📤 Sent', path: 'sent', component: <Sent />, id: 2 },
-    { title: '📬 Recieved', path: 'recieved', component: <Recieved />, id: 3 },
+    { title: '📬 Received', path: 'received', component: <Received />, id: 3 },
     { title: '🏝️ About', path: 'About', component: <About />, id: 4 },
   ];
 

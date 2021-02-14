@@ -32,7 +32,7 @@ const Login = ({ setToken }) => {
     <Container fluid className="auth-body">
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group controlId="username">
-          <Form.Label htmlFor="username">Email address</Form.Label>
+          <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control
             id="username"
             name="username"
