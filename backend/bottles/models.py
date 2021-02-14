@@ -19,6 +19,7 @@ class Message(models.Model):
     index = models.IntegerField(default=0)
     dm = models.BooleanField(default=False)
     id = models.CharField(max_length=8, primary_key=True)
+    amount = models.IntegerField(default=0)
 
     def save(self, *args,**kwargs):
         if not self.pk:

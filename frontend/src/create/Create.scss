@@ -1,2 +1,23 @@
 .create-page {
+  .form {
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 1px solid green;
+
+      .error {
+        color: red;
+      }
+    }
+
+    .form-row {
+      padding: 0 5px;
+      display: flex;
+      justify-content: space-between;
+      .form-group {
+        width: 48%;
+      }
+    }
+  }
 }
