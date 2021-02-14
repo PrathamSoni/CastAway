@@ -1,2 +1,9 @@
 .map-page {
 }
+.map-button {
+  background: #c88efa !important;
+  color: white;
+  &:hover {
+    background: darken(#c88efa, 5%) !important;
+  }
+}
