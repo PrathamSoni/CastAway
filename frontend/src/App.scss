@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url('./bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .body {
@@ -23,17 +26,17 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      background: rgba(126, 222, 222, 0.56);
+      background: #8697ff;
       border: none !important;
       outline: none !important;
       box-shadow: none !important;
       &:hover {
-        background: darken(rgba(126, 222, 222, 0.56), 5%);
+        background: darken(#8697ff, 5%);
       }
       &.inactive {
-        background: #ffffff;
+        background: transparent;
         &:hover {
-          background: darken(#ffffff, 5%);
+          background: darken(#fec6d5, 5%);
         }
       }
       h3 {

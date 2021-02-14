@@ -52,11 +52,11 @@ const App = () => {
   }
 
   const pages = [
-    { title: '🗺️ Map', path: 'map', component: <Map />, id: 0 },
-    { title: '✒️ Create', path: 'create', component: <Create />, id: 1 },
-    { title: '📤 Sent', path: 'sent', component: <Sent />, id: 2 },
-    { title: '📬 Received', path: 'received', component: <Received />, id: 3 },
-    { title: '🏝️ About', path: 'About', component: <About />, id: 4 },
+    { title: 'Map', path: 'map', component: <Map />, id: 0 },
+    { title: 'Create', path: 'create', component: <Create />, id: 1 },
+    { title: 'Sent', path: 'sent', component: <Sent />, id: 2 },
+    { title: 'Received', path: 'received', component: <Received />, id: 3 },
+    { title: 'About', path: 'About', component: <About />, id: 4 },
   ];
 
   return (

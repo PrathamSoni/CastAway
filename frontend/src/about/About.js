@@ -18,7 +18,6 @@ const About = () => {
     <Container fluid className="about-page page">
       <Row className="logo">
         <img src={Logo} alt="" />
-        <h1>CastAway</h1>
       </Row>
       <Row>
         <Col xs={7} className="about-left-col">
