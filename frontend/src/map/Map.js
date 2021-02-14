@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 import './Map.scss';
 import Marker from './Marker';
 
-const Map = () => {
+const Map = ({changePage}) => {
 
   const [bottles, setBottles] = useState([]);
   const [zoom, setZoom] = useState(0);
@@ -25,7 +25,7 @@ const Map = () => {
   },[]);
 
   let markers = bottles.map((element) => {
-    return <Marker 
+    return <Marker
             lat={element.lat}
             lng={element.long}
             zoom={zoom}/>
