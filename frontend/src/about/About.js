@@ -10,10 +10,39 @@ import Samarth from './img/samarth.png';
 import Naomi from './img/naomi.png';
 
 import Logo from '../logo.png';
+import Linkedin from './img/linkedin.png';
+import Github from './img/github.png';
 
 import './About.scss';
 
 const About = () => {
+  const data = [
+    {
+      photo: Dev,
+      name: 'Devrath Iyer',
+      linkedin: 'https://www.linkedin.com/in/devrathiyer/',
+      github: '',
+    },
+    {
+      photo: Samarth,
+      name: 'Samarth Goel',
+      linkedin: 'https://www.linkedin.com/in/samarth-goel-1047b8187/',
+      github: '',
+    },
+    {
+      photo: Prath,
+      name: 'Pratham Soni',
+      linkedin: 'https://www.linkedin.com/in/pratham-soni2002/',
+      github: '',
+    },
+    {
+      photo: Naomi,
+      name: 'Naomi Liu',
+      linkedin: 'https://www.linkedin.com/in/samarth-goel-1047b8187/',
+      github: '',
+    },
+  ];
+
   return (
     <Container fluid className="about-page page">
       <Row className="logo">
@@ -38,24 +67,44 @@ const About = () => {
             <h2>The Team</h2>
           </Row>
           <Row>
-            <Col className="person-col">
-              <img src={Dev} alt="Devrath Iyer" />
-              <h3>Devrath Iyer</h3>
-            </Col>
-            <Col className="person-col">
-              <img src={Samarth} alt="Samarth Goel" />
-              <h3>Samarth Goel</h3>
-            </Col>
+            {data.slice(0, 2).map(({ photo, name, linkedin, github }) => (
+              <Col className="person-col">
+                <div className="photos">
+                  <a href={linkedin} target="_blank" rel="noreferrer">
+                    <img
+                      src={Linkedin}
+                      alt="Linkedin"
+                      className="icon linkedin"
+                    />
+                  </a>
+                  <img src={photo} alt={name} />
+                  <a href={github} target="_blank" rel="noreferrer">
+                    <img src={Github} alt="Github" className="icon github" />
+                  </a>
+                </div>
+                <h3>{name}</h3>
+              </Col>
+            ))}
           </Row>
           <Row>
-            <Col className="person-col">
-              <img src={Prath} alt="Prathman Soni" />
-              <h3>Prathman Soni</h3>
-            </Col>
-            <Col className="person-col">
-              <img src={Naomi} alt="Naomi Liu" />
-              <h3>Naomi Liu</h3>
-            </Col>
+            {data.slice(2, 4).map(({ photo, name, linkedin, github }) => (
+              <Col className="person-col">
+                <div className="photos">
+                  <a href={linkedin} target="_blank" rel="noreferrer">
+                    <img
+                      src={Linkedin}
+                      alt="Linkedin"
+                      className="icon linkedin"
+                    />
+                  </a>
+                  <img src={photo} alt={name} />
+                  <a href={github} target="_blank" rel="noreferrer">
+                    <img src={Github} alt="Github" className="icon github" />
+                  </a>
+                </div>
+                <h3>{name}</h3>
+              </Col>
+            ))}
           </Row>
         </Col>
       </Row>

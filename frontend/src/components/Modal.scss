@@ -1,0 +1,13 @@
+.close-btn {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.close-button {
+  background: #9192fe;
+  color: #ffffff;
+  &:hover {
+    background: darken(#9192fe, 5%);
+  }
+}
