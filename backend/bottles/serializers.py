@@ -24,4 +24,5 @@ class MessageSerializer(serializers.ModelSerializer):
         message.sender = user
         if recipient is not None and recipient != "":
             message.recipient = User.objects.get(username=recipient)
-        return message.save()
+        message.save()
+        return message

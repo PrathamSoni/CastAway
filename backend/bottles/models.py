@@ -7,7 +7,7 @@ from pk_gen.app import pk_gen
 
 class Message(models.Model):
     content = models.CharField(max_length=1024)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sent",null=True)
     recipient = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE, related_name="recieved")
     lat = models.DecimalField(max_digits=20, decimal_places=15)
@@ -20,6 +20,9 @@ class Message(models.Model):
     dm = models.BooleanField(default=False)
     id = models.CharField(max_length=8, primary_key=True)
     amount = models.DecimalField(max_digits=20, decimal_places=15, default=0)
+
+    class Meta:
+        ordering = ('-created',)
 
     def save(self, *args,**kwargs):
         if not self.pk:

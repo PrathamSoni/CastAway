@@ -84,7 +84,7 @@ class BottleViewset(viewsets.ModelViewSet):
             data = serializer.data
             for datum in data:
                 datum.pop("content", None)
-                #datum.pop("sender", None)
+                datum.pop("sender", None)
             return self.paginator.get_paginated_response(data)
         else:
             return None
