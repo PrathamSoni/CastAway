@@ -32,7 +32,7 @@ const App = () => {
   }, []);
 
   require('dotenv').config();
-  if (token) {
+  if (!token) {
     return (
       <>
         <BrowserRouter>
