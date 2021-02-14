@@ -8,7 +8,7 @@ from pk_gen.app import pk_gen
 class Message(models.Model):
     content = models.CharField(max_length=1024)
     created = models.DateTimeField(auto_now_add=True)
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sent")
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sent",null=True)
     recipient = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE, related_name="recieved")
     lat = models.DecimalField(max_digits=20, decimal_places=15)
     long = models.DecimalField(max_digits=20, decimal_places=15)
@@ -21,5 +21,6 @@ class Message(models.Model):
     id = models.CharField(max_length=8, primary_key=True)
 
     def save(self, *args,**kwargs):
-        self.pk = pk_gen(Message.objects.all(), 8)
+        if not self.pk:
+            self.pk = pk_gen(Message.objects.all(), 8)
         return super(Message, self).save(*args, **kwargs)

@@ -47,9 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
 
-    "django_cron",
+    'django_cron',
     'corsheaders',
-
+    'castaway',
 ]
 
 MIDDLEWARE = [

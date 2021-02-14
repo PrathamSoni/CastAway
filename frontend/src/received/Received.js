@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../components/Modal';
+import { parseDate } from '../Utils';
 import Axios from 'axios';
 
 import Container from 'react-bootstrap/Container';
@@ -8,25 +9,30 @@ import Col from 'react-bootstrap/Col';
 
 import { useDisclosure } from '@chakra-ui/react';
 
-import './Sent.scss';
-
 import bottle from './bottle.png';
 
-const Sent = () => {
+import './Received.scss';
+
+const Recieved = () => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const header = { Authorization: `Bearer ${localStorage.getItem('token')}` };
 
   useEffect(() => {
-    Axios.get('https://castaway-304704.uc.r.appspot.com/api/bottle/sent', {
+    Axios.get('https://castaway-304704.uc.r.appspot.com/api/bottle/received', {
       headers: header,
     }).then((res) => {
       setMessages(res.data.results);
     });
   }, []);
+
+  const openModal = (element) => {
+    setMessage(element);
+    console.log(element);
+    onOpen();
+  };
 
   let display = messages.map((element) => {
     return (
@@ -41,34 +47,23 @@ const Sent = () => {
     );
   });
 
-  const openModal = (element) => {
-    setMessage(element);
-    console.log(element);
-    onOpen();
-  };
+  console.log(message);
 
   return (
-    <Container fluid className="sent-page page">
-      <h1>Sent</h1>
+    <Container fluid className="recieved-page page">
+      <h1>Received</h1>
       <Row>{display}</Row>
       {message && (
         <Modal
           isOpen={isOpen}
           onClose={onClose}
-          title={'Message'}
-          body={
-            <>
-              "{message.content}"
-              <p>
-                ({message.opened ? 'Opened at ' : 'Currently at '}){' '}
-                {/* {`${message.lat.toFixed(4)},${message.long.toFixed(4)}`}) */}
-              </p>
-            </>
-          }
+          title={`Message from ${parseDate(message.created)}`}
+          body={message.content}
+          reply={message.can_reply}
         />
       )}
     </Container>
   );
 };
 
-export default Sent;
+export default Recieved;
