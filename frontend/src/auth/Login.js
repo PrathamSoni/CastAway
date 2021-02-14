@@ -35,7 +35,6 @@ const Login = ({ setToken }) => {
       {' '}
       <div className="logo">
         <img src={Logo} alt="" />
-        <p>CastAway</p>
       </div>
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group controlId="username">

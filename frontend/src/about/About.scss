@@ -40,9 +40,24 @@
       flex-direction: column;
       align-items: center;
 
-      img {
+      .photos {
         height: 150px;
-        border-radius: 70px;
+        position: relative;
+        img {
+          height: 150px;
+          border-radius: 70px;
+        }
+        .icon {
+          height: 35px;
+          position: absolute;
+          bottom: 0;
+        }
+        .linkedin {
+          left: 0;
+        }
+        .github {
+          right: 0;
+        }
       }
 
       h3 {

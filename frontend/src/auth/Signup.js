@@ -35,7 +35,6 @@ const Signup = ({ setToken }) => {
     <Container fluid className="auth-body">
       <div className="logo">
         <img src={Logo} alt="" />
-        <p>CastAway</p>
       </div>
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group controlId="username">

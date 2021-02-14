@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import {
   Modal,
@@ -10,23 +10,24 @@ import {
   ModalCloseButton,
   Button,
 } from '@chakra-ui/react';
-import { Row } from 'react-bootstrap';
+import { Row, Form } from 'react-bootstrap';
+
+import './Modal.scss';
 
 const SiteModal = ({ isOpen, onClose, title, body, reply, submitReply }) => {
-
   const [replying, setReplying] = useState(false);
-  const [replyText, setReplyText] = useState("");
+  const [replyText, setReplyText] = useState('');
 
   const closeHandler = () => {
     setReplying(false);
-    setReplyText("");
+    setReplyText('');
     onClose();
   };
 
   const replyHandler = (replyText) => {
     setReplying(false);
     submitReply(replyText);
-    setReplyText("");
+    setReplyText('');
     onClose();
   };
 
@@ -35,21 +36,40 @@ const SiteModal = ({ isOpen, onClose, title, body, reply, submitReply }) => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>{body}
-        {replying && 
-            <Row>
-              <textarea value={replyText} className="w-100 m-2 p-1" onChange={(e) => setReplyText(e.target.value)}/>
-            </Row>
-           }</ModalBody>
+        <ModalCloseButton className="close-btn" />
+        <ModalBody>
+          {body}
+          {replying && (
+            <Form>
+              <Form.Group style={{ marginLeft: '-10px' }}>
+                <Form.Control
+                  as="textarea"
+                  value={replyText}
+                  className="w-100 m-2  p-1"
+                  onChange={(e) => setReplyText(e.target.value)}
+                />
+              </Form.Group>
+            </Form>
+          )}
+        </ModalBody>
 
-        <ModalFooter px={4} py={2}>
-          {reply && <Button onClick={!replying ? (() => setReplying(true)):(() => replyHandler(replyText))} setvariant="ghost">{replying ? "Send":"Reply"}</Button>}
-          <Button colorScheme="blue" ml={3} onClick={closeHandler}>
+        <ModalFooter px={4} py={2} pt={replying ? 0 : 2}>
+          {reply && (
+            <Button
+              onClick={
+                !replying
+                  ? () => setReplying(true)
+                  : () => replyHandler(replyText)
+              }
+              setvariant="ghost"
+            >
+              {replying ? 'Send' : 'Reply'}
+            </Button>
+          )}
+          <Button ml={3} onClick={closeHandler} className="close-button">
             Close
           </Button>
         </ModalFooter>
-        
       </ModalContent>
     </Modal>
   );

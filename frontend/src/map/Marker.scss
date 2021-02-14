@@ -1,0 +1,11 @@
+.popover {
+  width: 10vw;
+  margin-left: -5vw;
+
+  .confirm-button {
+    background: #c88efa;
+    &:hover {
+      background: darken(#c88efa, 5%);
+    }
+  }
+}

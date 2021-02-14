@@ -34,8 +34,8 @@ const App = () => {
   require('dotenv').config();
   if (!token) {
     return (
-      <>
-        <BrowserRouter>
+      <BrowserRouter>
+        <div className="App">
           <Navbar />
           <Switch>
             <Route path="/signup">
@@ -46,8 +46,8 @@ const App = () => {
             </Route>
           </Switch>
           <Footer />
-        </BrowserRouter>
-      </>
+        </div>
+      </BrowserRouter>
     );
   }
 
