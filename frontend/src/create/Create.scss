@@ -4,7 +4,8 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      border: 1px solid green;
+      font-family: 'Indie Flower';
+      font-size: 1.5rem;
 
       .error {
         color: red;
@@ -17,6 +18,25 @@
       justify-content: space-between;
       .form-group {
         width: 48%;
+      }
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      .btn {
+        margin: 1rem 25%;
+        padding: 0 0.75rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        background: #006cff;
+        border: none !important;
+        width: 50%;
+        font-family: 'Indie Flower';
+        font-size: 1.6rem;
+        &:hover {
+          background: darken(#006cff, 5%);
+        }
       }
     }
   }

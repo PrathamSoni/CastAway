@@ -36,7 +36,7 @@ const Recieved = () => {
 
   let display = messages.map((element) => {
     return (
-      <Col>
+      <Col xs={1}>
         <img
           src={bottle}
           onClick={() => openModal(element)}

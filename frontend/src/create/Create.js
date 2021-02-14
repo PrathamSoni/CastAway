@@ -18,9 +18,10 @@ const Create = () => {
   const [markerLat, setMarkerLat] = useState(0);
   const [markerLng, setMarkerLng] = useState(0);
   const [zoom, setZoom] = useState(0);
+  const [map, setMap] = useState(false);
 
   const AnyReactComponent = () => (
-    <img style={{ width: `${zoom / 2}vw` }} src={bottle} alt="bottle" />
+    <img src={bottle} alt="bottle" style={{ width: `${zoom / 2}vw` }} />
   );
 
   const createSchema = Yup.object().shape({
@@ -65,8 +66,13 @@ const Create = () => {
     setMarkerLat(lat);
     setMarkerLng(lng);
   };
+
   const updateZoom = ({ center, zoom }) => {
     setZoom(zoom);
+  };
+
+  const toggleMap = () => {
+    setMap(!map);
   };
 
   return (
@@ -75,7 +81,7 @@ const Create = () => {
 
       <Form onSubmit={formik.handleSubmit} className="form">
         <Form.Group controlId="content">
-          <Form.Label htmlFor="content">Message</Form.Label>
+          <Form.Label>Message</Form.Label>
           <Form.Control
             id="content"
             name="content"
@@ -91,7 +97,7 @@ const Create = () => {
 
         <Row className="form-row">
           <Form.Group controlId="recipient">
-            <Form.Label htmlFor="recipient">To (optional)</Form.Label>
+            <Form.Label>To (optional)</Form.Label>
             <Form.Control
               id="recipient"
               name="recipient"
@@ -102,7 +108,7 @@ const Create = () => {
           </Form.Group>
 
           <Form.Group controlId="tta">
-            <Form.Label htmlFor="tta">Time to arrive</Form.Label>
+            <Form.Label>Time to arrive</Form.Label>
             <Form.Control
               id="tta"
               name="tta"
@@ -116,22 +122,30 @@ const Create = () => {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+        <Col className="button-group">
+          <Button onClick={toggleMap}>{`${
+            map ? 'Collapse' : 'Display'
+          } Map`}</Button>
 
-      <div style={{ height: '75vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_API }}
-          defaultCenter={{ lat: 0, lng: 0 }}
-          defaultZoom={0}
-          onChange={updateZoom}
-          onClick={updateMarker}
-        >
-          <AnyReactComponent lat={markerLat} lng={markerLng} />
-        </GoogleMapReact>
-      </div>
+          {map && (
+            <div style={{ height: '75vh', width: '100%' }}>
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_API }}
+                defaultCenter={{ lat: 0, lng: 0 }}
+                defaultZoom={0}
+                onChange={updateZoom}
+                onClick={updateMarker}
+              >
+                <AnyReactComponent lat={markerLat} lng={markerLng} />
+              </GoogleMapReact>
+            </div>
+          )}
+
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+      </Form>
     </Container>
   );
 };

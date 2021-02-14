@@ -9,6 +9,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import Logo from '../logo.png';
+
 import './Auth.scss';
 
 const Login = ({ setToken }) => {
@@ -30,6 +32,11 @@ const Login = ({ setToken }) => {
 
   return (
     <Container fluid className="auth-body">
+      {' '}
+      <div className="logo">
+        <img src={Logo} alt="" />
+        <p>CastAway</p>
+      </div>
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group controlId="username">
           <Form.Label htmlFor="username">Username</Form.Label>
@@ -58,7 +65,8 @@ const Login = ({ setToken }) => {
         </Button>
       </Form>
       <p className="disclaimer">
-        Don't have an account? <Link to="/signup">Sign up here</Link>
+        <span style={{ color: '#000000' }}>Don't have an account?</span>{' '}
+        <Link to="/signup">Sign up here.</Link>
       </p>
     </Container>
   );

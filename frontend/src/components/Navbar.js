@@ -17,7 +17,7 @@ const SiteNavbar = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto nav">
-          <Nav.Link href="/sign-up">
+          <Nav.Link href="/signup">
             <p>Sign Up</p>
           </Nav.Link>
           <Nav.Link href="/login">
