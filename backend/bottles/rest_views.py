@@ -84,7 +84,7 @@ class BottleViewset(viewsets.ModelViewSet):
             data = serializer.data
             for datum in data:
                 datum.pop("content", None)
-                datum.pop("sender", None)
+                #datum.pop("sender", None)
             return self.paginator.get_paginated_response(data)
         else:
             return None
@@ -132,7 +132,7 @@ class BottleViewset(viewsets.ModelViewSet):
             data['can_reply'] = True
             data['index'] = parent.index + 1
             data['recipient'] = parent.sender.username
-            if parent.recipient is None:
+            if parent.dm:
                 data['can_reply'] = False
             data['dm'] = parent.dm
 
