@@ -53,12 +53,12 @@ const About = () => {
           <Row>
             <h2>About Us</h2>
             <p>
-              CastAway is a new-age post-modernist inspired social networking
-              phenomona transforming the multi-trillion dollar
-              consumer-generative content and communication market. Built by
-              users for users, CastAway's team consists of the brightest minds
-              in emerging communications technology and the cutting edge of
-              neuroscience from Stanford University and UC Berkeley.
+            CastAway is represents the next-generation of social networking, a
+            product that is centered on genuine human collaboration opposed to
+            trifling like and follower numbers. We've built a platform for users
+            by users, delivering a seemless social experience, and we're glad
+            you're here with us. CastAway's team consists of passionate and
+            talented students from Stanford and UC Berkeley! 
             </p>
           </Row>
         </Col>
