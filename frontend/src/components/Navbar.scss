@@ -1,9 +1,8 @@
 .navbar {
   height: 10vh;
-  border: 1px solid blue;
+  border-bottom: 1.5px solid #006cff;
 
   .brand-container {
-    border: 1px solid blue;
     display: flex;
     align-items: center;
     height: 100%;
@@ -18,10 +17,9 @@
   }
 
   .nav {
-    border: 1px solid blue;
-
     p {
       font-size: 1.4rem;
+      color: #000000;
     }
   }
 }

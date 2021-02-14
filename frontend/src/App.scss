@@ -10,11 +10,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid green;
     height: 80vh;
+    padding-right: 0;
 
     .btn {
-      width: 80%;
+      width: 95%;
+      margin-left: 5%;
+      margin-right: -2rem;
       padding: 1rem 10%;
       height: 13%;
       border-radius: 1.5rem;
@@ -28,6 +30,12 @@
       &:hover {
         background: darken(rgba(126, 222, 222, 0.56), 5%);
       }
+      &.inactive {
+        background: #ffffff;
+        &:hover {
+          background: darken(#ffffff, 5%);
+        }
+      }
       h3 {
         transition: 0.15s ease-in-out;
       }
@@ -38,7 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid green;
     height: 80vh;
+    padding: 0;
   }
 }
