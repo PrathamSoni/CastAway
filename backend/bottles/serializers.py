@@ -12,7 +12,7 @@ class MessageSerializer(serializers.ModelSerializer):
     id = serializers.CharField(required=False)
     sender = serializers.CharField(source="sender.username", read_only=True)
     recipient = serializers.CharField(source="recipient.username", read_only=True)
-    amount = serializers.DecimalField(max_digits=20, decimal_places=15, required=False,min_value=0.01,max_value=1999.99)
+    amount = serializers.DecimalField(max_digits=20, decimal_places=15, required=False,min_value=0.00,max_value=1999.99)
 
     class Meta:
         model = Message
