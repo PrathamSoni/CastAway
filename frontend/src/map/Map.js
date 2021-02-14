@@ -70,7 +70,7 @@ const Map = ({ changePage }) => {
 
   return (
     <Container fluid className="map-page page">
-      <div style={{ height: '80vh', width: '100%' }}>
+      <div style={{ height: '70vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_API }}
           defaultCenter={{ lat: 59.95, lng: 30.33 }}

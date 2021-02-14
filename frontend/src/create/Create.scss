@@ -16,6 +16,9 @@
       padding: 0 5px;
       display: flex;
       justify-content: space-between;
+      .form-label {
+        color: #006cff;
+      }
       .form-group {
         width: 48%;
       }
