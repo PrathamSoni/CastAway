@@ -2,4 +2,14 @@
   .received-bottle {
     margin-bottom: 2vw;
   }
+
+  .new-badge {
+    position: absolute;
+    right: 20%;
+    top: 0;
+    border-radius: 100%;
+    min-width: 1.5vw;
+    min-height: 1.5vw;
+    background: #ffcdaf !important;
+  }
 }

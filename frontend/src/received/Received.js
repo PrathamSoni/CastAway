@@ -34,6 +34,20 @@ const Recieved = () => {
     onOpen();
   };
 
+  const openBottle = (element) => {
+    Axios.get(`https://castaway-304704.uc.r.appspot.com/api/bottle/${element.id}/`, {
+      headers: header,
+      params: {
+        lat: localStorage.getItem('lat'),
+        long: localStorage.getItem('lng'),
+      }
+    }).then((res) => {
+      element.status = res.data.status;
+      element.opened = true;
+      openModal(element);
+    });
+  };
+
   const submitReply = (replyText) => {
     Axios.post('https://castaway-304704.uc.r.appspot.com/api/bottle/',
     {
@@ -55,16 +69,15 @@ const Recieved = () => {
       <Col xs={1}>
         <img
           src={bottle}
-          onClick={() => openModal(element)}
+          onClick={() => openBottle(element)}
           alt="message"
           className="received-bottle"
           style={{ cursor: 'pointer' }}
         />
+        {!element.opened && <span className="new-badge"></span>}
       </Col>
     );
   });
-
-  console.log(message);
 
   return (
     <Container fluid className="received-page page">
@@ -75,9 +88,18 @@ const Recieved = () => {
           isOpen={isOpen}
           onClose={onClose}
           title={`Message from ${parseDate(message.created)}`}
-          body={message.content}
+          body={
+            <>
+              "{message.content}"
+              {message.amount > 0.001 && (
+              <p>Amount: {message.amount}, Status: {message.status ? "Delivered":"Failed"}</p>
+              )}
+            </>
+          }
           reply={message.can_reply}
           submitReply={submitReply}
+          amount={message.amount}
+          status={message.status}
         />
       )}
     </Container>
