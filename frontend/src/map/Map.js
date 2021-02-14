@@ -7,6 +7,17 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button
+} from "@chakra-ui/react"
 
 import './Map.scss';
 import Marker from './Marker';
@@ -15,17 +26,37 @@ const Map = ({changePage}) => {
 
   const [bottles, setBottles] = useState([]);
   const [zoom, setZoom] = useState(0);
+  const [id,setId] = useState(null);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
 
   useEffect(() => {
     Axios.get("https://castaway-304704.uc.r.appspot.com/api/bottle/",
     {headers:header}).then((res) => {
+      console.log(res);
       setBottles(res.data.results);
     });
   },[]);
 
+  const openModal = () => {
+    Axios.get(`https://castaway-304704.uc.r.appspot.com/api/bottle/${id}`,
+    {headers:header,
+      params: {
+        lat: localStorage.getItem("lat"),
+        long:localStorage.getItem("lng")
+      }
+    }).then((res) => {
+      console.log(res.data);
+      onOpen();
+    });
+  }
+
   let markers = bottles.map((element) => {
     return <Marker
+            id={element.id}
+            open={openModal}
+            setId={setId}
             lat={element.lat}
             lng={element.long}
             zoom={zoom}/>
@@ -49,6 +80,22 @@ const Map = ({changePage}) => {
           {markers}
         </GoogleMapReact>
       </div>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <p>Hi</p>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Container>
   );
 };

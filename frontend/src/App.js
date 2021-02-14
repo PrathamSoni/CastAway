@@ -30,7 +30,7 @@ const App = () => {
       localStorage.getItem("lng",position.coords.longitude);
     });
   },[]);
-  
+
   require('dotenv').config();
   if (!token) {
     return (
