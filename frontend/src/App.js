@@ -26,8 +26,8 @@ const App = () => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
+      localStorage.setItem('lng', position.coords.longitude);
       localStorage.setItem('lat', position.coords.latitude);
-      localStorage.getItem('lng', position.coords.longitude);
     });
   },[]);
 

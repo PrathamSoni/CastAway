@@ -65,7 +65,6 @@ const Sent = () => {
             <p>({message.opened ? "Opened at ":"Currently at "}) {`${(message.lat).toFixed(4)},${(message.long).toFixed(4)}`})</p>
 
           </ModalBody>
-
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
