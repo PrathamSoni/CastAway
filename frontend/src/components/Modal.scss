@@ -6,6 +6,9 @@
 
 .close-button {
   background: #9192fe !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   color: #ffffff;
   &:hover {
     background: darken(#9192fe, 5%) !important;
