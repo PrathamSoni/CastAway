@@ -1,5 +1,6 @@
 .navbar {
   height: 10vh;
+  border-bottom: 1.5px solid #006cff;
 
   .brand-container {
     display: flex;
@@ -18,6 +19,7 @@
   .nav {
     p {
       font-size: 1.4rem;
+      color: #000000;
     }
   }
 }

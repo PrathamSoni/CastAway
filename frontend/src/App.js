@@ -65,19 +65,23 @@ const App = () => {
         <Navbar />
         <Container fluid className="body">
           <Row>
-            <Col xs={4} className="left-col">
+            <Col xs={3} className="left-col">
               {pages.map(({ title, id }) => (
                 <Button
                   onClick={() => setPage(id)}
-                  style={page !== id ? { background: '#ffffff' } : null}
+                  className={page !== id && 'inactive'}
                 >
-                  <h3 style={page !== id ? { color: '#000000' } : null}>
+                  <h3
+                    style={
+                      page !== id ? { color: '#006cff' } : { color: '#ffffff' }
+                    }
+                  >
                     {title}
                   </h3>
                 </Button>
               ))}
             </Col>
-            <Col xs={8} className="right-col">
+            <Col xs={9} className="right-col">
               {pages[page].component}
             </Col>
           </Row>

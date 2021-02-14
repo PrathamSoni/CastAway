@@ -13,7 +13,7 @@ import './About.scss';
 
 const About = () => {
   return (
-    <Container fluid className="about-page">
+    <Container fluid className="about-page page">
       <Row>
         <h1>CastAway</h1>
       </Row>

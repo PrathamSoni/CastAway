@@ -9,19 +9,18 @@ import './Recieved.scss';
 
 const Recieved = () => {
   const [messages, setMessages] = useState([]);
-  const header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
+  const header = { Authorization: `Bearer ${localStorage.getItem('token')}` };
 
   useEffect(() => {
-    Axios.get(
-      'https://castaway-304704.uc.r.appspot.com/api/bottle/recieved',
-      {headers:header}
-    ).then((res) => {
+    Axios.get('https://castaway-304704.uc.r.appspot.com/api/bottle/recieved', {
+      headers: header,
+    }).then((res) => {
       setMessages(res.data.results);
     });
   }, []);
 
   return (
-    <Container fluid className="recieved-page">
+    <Container fluid className="recieved-page page">
       <h1>Recieved</h1>
     </Container>
   );
