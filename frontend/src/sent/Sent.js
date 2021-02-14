@@ -61,8 +61,11 @@ const Sent = () => {
               "{message.content}"
               <p>
                 {message.opened ? 'Opened at ' : 'Currently at '}{' '}
-                {(`${Math.round(message.lat * 100) / 100}, ${Math.round(message.long * 100) / 100}`)}
+                {`(${Math.round(message.lat * 100) / 100}, ${Math.round(message.long * 100) / 100})`}
               </p>
+              {message.amount > 0.001 && (
+              <p>Amount: {message.amount}, Status: {message.status ? "Delivered":"Failed"}</p>
+              )}
             </>
           }
         />

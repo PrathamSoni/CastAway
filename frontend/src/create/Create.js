@@ -36,6 +36,7 @@ const Create = () => {
       recipient: '',
       can_reply: false,
       tta: 0,
+      amount: 0,
     },
     validationSchema: createSchema,
     onSubmit: (values) => {
@@ -49,12 +50,14 @@ const Create = () => {
           tta: values.tta,
           canReply: values.canReply,
           opened: false,
+          amount: values.amount,
         },
         { headers: header }
       ).then((res) => {
         setMarkerLat(0);
         setMarkerLng(0);
         setZoom(0);
+        formik.values.amount = 0;
         formik.values.can_reply = false;
         formik.values.content = '';
         formik.values.recipient = '';
@@ -80,7 +83,7 @@ const Create = () => {
       <h1>Create</h1>
 
       <Form onSubmit={formik.handleSubmit} className="form">
-        <Form.Group controlId="content">
+        <Form.Group>
           <Form.Label>Message</Form.Label>
           <Form.Control
             id="content"
@@ -96,7 +99,7 @@ const Create = () => {
         </Form.Group>
 
         <Row className="form-row">
-          <Form.Group controlId="recipient">
+          <Form.Group>
             <Form.Label>To (optional)</Form.Label>
             <Form.Control
               id="recipient"
@@ -107,7 +110,7 @@ const Create = () => {
             />
           </Form.Group>
 
-          <Form.Group controlId="tta">
+          <Form.Group>
             <Form.Label>Time to arrive</Form.Label>
             <Form.Control
               id="tta"
@@ -118,6 +121,21 @@ const Create = () => {
             />
             {formik.touched.tta && formik.errors.tta && (
               <Form.Text className="error">{formik.errors.tta}</Form.Text>
+            )}
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Amount (Up to 2000 USD)</Form.Label>
+            <Form.Control
+              id="amount"
+              name="amount"
+              type="number"
+              step={0.01}
+              onChange={formik.handleChange}
+              value={formik.values.amount}
+            />
+            {formik.touched.amount && formik.errors.amount && (
+              <Form.Text className="error">{formik.errors.amount}</Form.Text>
             )}
           </Form.Group>
         </Row>
