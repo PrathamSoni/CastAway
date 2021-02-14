@@ -21,11 +21,11 @@ h6,
 p {
   padding: 0;
   margin: 0;
-  font-family: 'Reenie Beanie';
-  color: #006cff;
+  font-family: 'IBM Plex Mono';
+  color: #000000;
 }
 
 h3,
 p {
-  font-family: 'Indie Flower';
+  font-family: 'IBM Plex Mono';
 }

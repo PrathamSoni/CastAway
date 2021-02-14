@@ -1,2 +1,48 @@
 .create-page {
+  .form {
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: 'IBM Plex Mono';
+      font-size: 1.5rem;
+
+      .error {
+        color: red;
+      }
+    }
+
+    .form-row {
+      padding: 0 5px;
+      display: flex;
+      justify-content: space-between;
+      .form-label {
+        color: #006cff;
+      }
+      .form-group {
+        width: 48%;
+      }
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      .btn {
+        margin: 1rem 25%;
+        padding: 0 0.75rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        background: #c88efa;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        width: 50%;
+        font-family: 'IBM Plex Mono';
+        font-size: 1.5rem;
+        &:hover {
+          background: darken(#c88efa, 5%);
+        }
+      }
+    }
+  }
 }

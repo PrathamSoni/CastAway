@@ -16,8 +16,8 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button
-} from "@chakra-ui/react"
+  Button,
+} from '@chakra-ui/react';
 
 import './Map.scss';
 import Marker from './Marker';
@@ -25,40 +25,43 @@ import Marker from './Marker';
 const Map = ({ changePage }) => {
   const [bottles, setBottles] = useState([]);
   const [zoom, setZoom] = useState(0);
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
+  const header = { Authorization: `Bearer ${localStorage.getItem('token')}` };
 
   useEffect(() => {
-    Axios.get("https://castaway-304704.uc.r.appspot.com/api/bottle/",
-    {headers:header}).then((res) => {
-      
+    Axios.get('https://castaway-304704.uc.r.appspot.com/api/bottle/', {
+      headers: header,
+    }).then((res) => {
       setBottles(res.data.results);
     });
   }, []);
 
   const openModal = (id) => {
     console.log(id);
-    Axios.get(`https://castaway-304704.uc.r.appspot.com/api/bottle/${id}`,
-    {headers:header,
+    Axios.get(`https://castaway-304704.uc.r.appspot.com/api/bottle/${id}`, {
+      headers: header,
       params: {
-        lat: localStorage.getItem("lat"),
-        long:localStorage.getItem("lng")
-      }
+        lat: localStorage.getItem('lat'),
+        long: localStorage.getItem('lng'),
+      },
     }).then((res) => {
       setContent(res.data.content);
       onOpen();
     });
-  }
+  };
 
   let markers = bottles.map((element) => {
-    return <Marker
-            id={element.id}
-            open={openModal}
-            lat={element.lat}
-            lng={element.long}
-            zoom={zoom}/>
+    return (
+      <Marker
+        id={element.id}
+        open={openModal}
+        lat={element.lat}
+        lng={element.long}
+        zoom={zoom}
+      />
+    );
   });
 
   const updateZoom = ({ center, zoom }) => {
@@ -67,8 +70,7 @@ const Map = ({ changePage }) => {
 
   return (
     <Container fluid className="map-page page">
-      <h1>Map</h1>
-      <div style={{ height: '75vh', width: '100%' }}>
+      <div style={{ height: '70vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_API }}
           defaultCenter={{ lat: 59.95, lng: 30.33 }}

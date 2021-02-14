@@ -1,25 +1,38 @@
 .navbar {
   height: 10vh;
-  border-bottom: 1.5px solid #006cff;
 
   .brand-container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     height: 100%;
     img {
       height: 100%;
-      margin-right: 0.5rem;
     }
 
     .logo {
       font-size: 1.8rem;
+      color: #000000;
     }
   }
 
   .nav {
     p {
       font-size: 1.4rem;
-      color: #000000;
+      color: #ffffff;
+    }
+
+    p:after {
+      display: block;
+      content: '';
+      border-bottom: solid 1px #ffffff;
+      transform: scaleX(0);
+      transition: transform 350ms ease-in-out;
+    }
+    p:hover:after {
+      transform: scaleX(1);
+    }
+    p:after {
+      transform-origin: 100% 0%;
     }
   }
 }

@@ -30,7 +30,7 @@ const Sent = () => {
 
   let display = messages.map((element) => {
     return (
-      <Col>
+      <Col xs={1}>
         <img
           src={bottle}
           onClick={() => openModal(element)}
@@ -60,8 +60,8 @@ const Sent = () => {
             <>
               "{message.content}"
               <p>
-                ({message.opened ? 'Opened at ' : 'Currently at '}){' '}
-                {/* {`${message.lat.toFixed(4)},${message.long.toFixed(4)}`}) */}
+                {message.opened ? 'Opened at ' : 'Currently at '}{' '}
+                {(`${Math.round(message.lat * 100) / 100}, ${Math.round(message.long * 100) / 100}`)}
               </p>
             </>
           }

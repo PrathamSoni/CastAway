@@ -52,11 +52,11 @@ const App = () => {
   }
 
   const pages = [
-    { title: '🗺️ Map', path: 'map', component: <Map />, id: 0 },
-    { title: '✒️ Create', path: 'create', component: <Create />, id: 1 },
-    { title: '📤 Sent', path: 'sent', component: <Sent />, id: 2 },
-    { title: '📬 Received', path: 'received', component: <Received />, id: 3 },
-    { title: '🏝️ About', path: 'About', component: <About />, id: 4 },
+    { title: 'Map', path: 'map', component: <Map />, id: 0 },
+    { title: 'Create', path: 'create', component: <Create />, id: 1 },
+    { title: 'Sent', path: 'sent', component: <Sent />, id: 2 },
+    { title: 'Received', path: 'received', component: <Received />, id: 3 },
+    { title: 'About', path: 'About', component: <About />, id: 4 },
   ];
 
   return (
@@ -65,7 +65,7 @@ const App = () => {
         <Navbar />
         <Container fluid className="body">
           <Row>
-            <Col xs={3} className="left-col">
+            <Col xs={2} className="left-col">
               {pages.map(({ title, id }) => (
                 <Button
                   onClick={() => setPage(id)}
@@ -81,7 +81,7 @@ const App = () => {
                 </Button>
               ))}
             </Col>
-            <Col xs={9} className="right-col">
+            <Col xs={10} className="right-col">
               {pages[page].component}
             </Col>
           </Row>
