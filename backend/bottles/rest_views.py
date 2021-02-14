@@ -7,9 +7,7 @@ from .serializers import MessageSerializer
 
 from django.shortcuts import get_object_or_404, Http404, HttpResponse
 
-from django.contrib.auth.models import User
 from django.db.models import F
-from rest_framework.permissions import IsAuthenticated
 from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from rest_framework import viewsets
 
@@ -57,7 +55,7 @@ class BottleViewset(viewsets.ModelViewSet):
             data = serializer.data
             for datum in data:
                 datum.pop("content")
-                datum.pop("sender")
+                datum.pop("sender", None)
             return self.paginator.get_paginated_response(data)
         else:
             return None
@@ -69,7 +67,7 @@ class BottleViewset(viewsets.ModelViewSet):
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             data = serializer.data
             for datum in data:
-                datum.pop("sender")
+                datum.pop("sender",None)
             return self.paginator.get_paginated_response(data)
         else:
             return None
@@ -103,7 +101,7 @@ class BottleViewset(viewsets.ModelViewSet):
             else:
                 data['can_reply'] = True
                 data['index'] = parent.index + 1
-                data['recipient'] = parent.sender.id
+                data['recipient'] = parent.sender.username
                 if parent.recipient is None:
                     data['can_reply'] = False
                 data['dm'] = parent.dm
@@ -115,7 +113,6 @@ class BottleViewset(viewsets.ModelViewSet):
             else:
                 data['dm'] = False
 
-        data['sender'] = request.user.id
 
         serializer = MessageSerializer(data=data)
         if not serializer.is_valid():
@@ -125,5 +122,5 @@ class BottleViewset(viewsets.ModelViewSet):
             parent.can_reply = False
             parent.save()
 
-        serializer.save()
+        serializer.save(request.user, data["recipient"])
         return Response(status=HTTP_200_OK)
