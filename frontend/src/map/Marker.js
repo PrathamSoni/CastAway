@@ -16,9 +16,7 @@ const Marker = ({id, zoom, setId, open}) => {
     const header = {Authorization: `Bearer ${localStorage.getItem("token")}`};
 
     const openModal = () => {
-        console.log(id);
-        setId(id);
-        open();
+        open(id);
     };
 
     return (<Popover>

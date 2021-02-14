@@ -25,7 +25,7 @@ import Marker from './Marker';
 const Map = ({ changePage }) => {
   const [bottles, setBottles] = useState([]);
   const [zoom, setZoom] = useState(0);
-  const [id,setId] = useState(null);
+  const [content, setContent] = useState("");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -33,12 +33,13 @@ const Map = ({ changePage }) => {
   useEffect(() => {
     Axios.get("https://castaway-304704.uc.r.appspot.com/api/bottle/",
     {headers:header}).then((res) => {
-      console.log(res);
+      
       setBottles(res.data.results);
     });
   }, []);
 
-  const openModal = () => {
+  const openModal = (id) => {
+    console.log(id);
     Axios.get(`https://castaway-304704.uc.r.appspot.com/api/bottle/${id}`,
     {headers:header,
       params: {
@@ -46,7 +47,7 @@ const Map = ({ changePage }) => {
         long:localStorage.getItem("lng")
       }
     }).then((res) => {
-      console.log(res.data);
+      setContent(res.data.content);
       onOpen();
     });
   }
@@ -55,7 +56,6 @@ const Map = ({ changePage }) => {
     return <Marker
             id={element.id}
             open={openModal}
-            setId={setId}
             lat={element.lat}
             lng={element.long}
             zoom={zoom}/>
@@ -81,10 +81,10 @@ const Map = ({ changePage }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Message</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <p>Hi</p>
+            <p>{content}</p>
           </ModalBody>
 
           <ModalFooter>
