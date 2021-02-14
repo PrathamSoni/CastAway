@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from . import api
 from rest_framework_simplejwt.views import TokenRefreshSlidingView,TokenVerifyView
-import auth.rest_views as views
+import authorization.rest_views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
