@@ -1,12 +1,11 @@
 import logging
-from django.shortcuts import get_object_or_404
-from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.contrib.auth.hashers import BCryptSHA256PasswordHasher
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainSlidingSerializer  # new
 from .models import BankInfo
 import requests
+import os
 
 hasher = BCryptSHA256PasswordHasher()
 
@@ -45,7 +44,7 @@ class UserSerializer(serializers.ModelSerializer):
             headers = {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization": "8a195fc989dc69ff1bb08497d663dfd3:2d3ea4bc8d061405432603b59190286c",
+                "Authorization": "{}:{}".format(os.environ['API_KEY'], os.environ['SECRET']),
             }
             response = requests.request("POST", url, json=payload, headers=headers)
             dictionary = response.json()
