@@ -21,11 +21,13 @@ Our platform leverages the truly global scale of social media - allowing users t
 
 ## How we built it
 Our platform is powered by several great technologies:
+
 -A React.js frontend app provides a clean interface that negotiates interactions between our users and the backend.
 -A Django codebase serves a RESTful API to manage data storage, including user accounts, bottles, and payments.
 -Google Cloud Platform w/ Google App Engine provides hosting for both our frontend and backend.
 -The Google Maps Javascript API allows us to display bottles in a fun and informative way.
 -The Checkbook.io API enables users to hide money in bottles and send directly to their contacts.
+
 We designed our platform in Figma.
 
 ## Challenges we ran into
