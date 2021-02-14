@@ -6,6 +6,8 @@ import GoogleMapReact from 'google-map-react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 import bottle from './bottle.png';
 
@@ -17,7 +19,7 @@ const Create = () => {
   const [zoom, setZoom] = useState(0);
 
   const AnyReactComponent = () => (
-    <img style={{ width: `${zoom / 2}vw` }} src={bottle} />
+    <img style={{ width: `${zoom / 2}vw` }} src={bottle} alt="bottle" />
   );
 
   const header = { Authorization: `Bearer ${localStorage.getItem('token')}` };
@@ -59,6 +61,22 @@ const Create = () => {
   return (
     <Container fluid className="create-page">
       <h1>Create</h1>
+      <Form onSubmit={formik.handleSubmit}>
+        <Form.Group controlId="username">
+          <Form.Label htmlFor="content">Message</Form.Label>
+          <Form.Control
+            id="username"
+            name="username"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.username}
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
       <>
         <form onSubmit={formik.handleSubmit}>
           <label htmlFor="content">Message:</label>
