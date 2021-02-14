@@ -57,6 +57,7 @@ const Recieved = () => {
           src={bottle}
           onClick={() => openModal(element)}
           alt="message"
+          className="received-bottle"
           style={{ cursor: 'pointer' }}
         />
       </Col>
@@ -66,7 +67,7 @@ const Recieved = () => {
   console.log(message);
 
   return (
-    <Container fluid className="recieved-page page">
+    <Container fluid className="received-page page">
       <h1>Received</h1>
       <Row>{display}</Row>
       {message && (
