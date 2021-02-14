@@ -52,7 +52,6 @@ class UserSerializer(serializers.ModelSerializer):
             dictionary["bank_id"] = dictionary.pop('id')
             obj = BankInfo(**dictionary)
             obj.save()
-
         except:
             pass
         return new_user

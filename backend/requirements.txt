@@ -9,3 +9,4 @@ sqlparse==0.4.1
 PyJWT==1.7.1
 django-cron==0.5.1
 django-cors-headers==3.6.0
+requests=2.25.1
