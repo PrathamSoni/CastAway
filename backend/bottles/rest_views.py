@@ -18,6 +18,7 @@ import logging
 logger = logging.getLogger('testlogger')
 from django.utils import timezone
 
+
 class BottleViewset(viewsets.ModelViewSet):
     queryset = Message.objects.none()
     paginator = LimitOffsetPagination()
@@ -28,7 +29,7 @@ class BottleViewset(viewsets.ModelViewSet):
         message = get_object_or_404(queryset, pk=pk)
 
         if request.user != message.sender:
-            if message.created > timezone.now()-message.tta:
+            if message.created > timezone.now() - message.tta:
                 return HttpResponseBadRequest()
 
         if message.recipient is not None:
@@ -38,6 +39,10 @@ class BottleViewset(viewsets.ModelViewSet):
         elif request.user != message.sender:
             message.opened = True
             message.recipient = request.user
+            if "lat" in request.data.keys():
+                message.lat = request.query_params['lat']
+            if "long" in request.data.keys():
+                message.lat = request.query_params['long']
             message.save()
         # opened successfully
         serializer = MessageSerializer(message, context={'request': request})
@@ -49,7 +54,8 @@ class BottleViewset(viewsets.ModelViewSet):
         return Response(data)
 
     def list(self, request):
-        page = self.paginator.paginate_queryset(Message.objects.filter(dm=False, opened=False, created__lte=timezone.now()-F('tta')), self.request)
+        page = self.paginator.paginate_queryset(
+            Message.objects.filter(dm=False, opened=False, created__lte=timezone.now() - F('tta')), self.request)
         if page is not None:
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             data = serializer.data
@@ -67,14 +73,15 @@ class BottleViewset(viewsets.ModelViewSet):
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             data = serializer.data
             for datum in data:
-                datum.pop("sender",None)
+                datum.pop("sender", None)
             return self.paginator.get_paginated_response(data)
         else:
             return None
 
     @action(detail=False)
     def received(self, request):
-        page = self.paginator.paginate_queryset(Message.objects.filter(recipient=request.user, created__lte=timezone.now()-F('tta')), self.request)
+        page = self.paginator.paginate_queryset(
+            Message.objects.filter(recipient=request.user, created__lte=timezone.now() - F('tta')), self.request)
         if page is not None:
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             data = serializer.data
@@ -112,7 +119,6 @@ class BottleViewset(viewsets.ModelViewSet):
                 data['dm'] = True
             else:
                 data['dm'] = False
-
 
         serializer = MessageSerializer(data=data)
         if not serializer.is_valid():
