@@ -1,8 +1,10 @@
 .App {
   text-align: center;
   background-image: url('./bg.png');
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
+  max-height: 100vh;
+  overflow-y: scroll;
 }
 
 .body {

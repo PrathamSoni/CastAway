@@ -65,7 +65,7 @@ const App = () => {
         <Navbar />
         <Container fluid className="body">
           <Row>
-            <Col xs={3} className="left-col">
+            <Col xs={2} className="left-col">
               {pages.map(({ title, id }) => (
                 <Button
                   onClick={() => setPage(id)}
@@ -81,7 +81,7 @@ const App = () => {
                 </Button>
               ))}
             </Col>
-            <Col xs={9} className="right-col">
+            <Col xs={10} className="right-col">
               {pages[page].component}
             </Col>
           </Row>
