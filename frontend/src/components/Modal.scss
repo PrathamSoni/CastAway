@@ -5,9 +5,9 @@
 }
 
 .close-button {
-  background: #9192fe;
+  background: #9192fe !important;
   color: #ffffff;
   &:hover {
-    background: darken(#9192fe, 5%);
+    background: darken(#9192fe, 5%) !important;
   }
 }
