@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import Axios from 'axios';
@@ -22,8 +22,7 @@ import {
 import './Map.scss';
 import Marker from './Marker';
 
-const Map = ({changePage}) => {
-
+const Map = ({ changePage }) => {
   const [bottles, setBottles] = useState([]);
   const [zoom, setZoom] = useState(0);
   const [id,setId] = useState(null);
@@ -37,7 +36,7 @@ const Map = ({changePage}) => {
       console.log(res);
       setBottles(res.data.results);
     });
-  },[]);
+  }, []);
 
   const openModal = () => {
     Axios.get(`https://castaway-304704.uc.r.appspot.com/api/bottle/${id}`,
@@ -62,18 +61,17 @@ const Map = ({changePage}) => {
             zoom={zoom}/>
   });
 
-  const updateZoom = ({center, zoom}) => {
+  const updateZoom = ({ center, zoom }) => {
     setZoom(zoom);
   };
 
   return (
-    <Container fluid className="map-page">
+    <Container fluid className="map-page page">
       <h1>Map</h1>
       <div style={{ height: '75vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GMAPS_API }}
-          defaultCenter={{lat: 59.95,
-            lng: 30.33}}
+          defaultCenter={{ lat: 59.95, lng: 30.33 }}
           defaultZoom={0}
           onChange={updateZoom}
         >

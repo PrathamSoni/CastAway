@@ -70,7 +70,7 @@ const Create = () => {
   };
 
   return (
-    <Container fluid className="create-page">
+    <Container fluid className="create-page page">
       <h1>Create</h1>
 
       <>

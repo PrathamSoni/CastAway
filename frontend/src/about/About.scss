@@ -1,5 +1,9 @@
 .about-page {
-  border: 1px solid pink;
-  max-height: 100%;
-  overflow-y: scroll;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

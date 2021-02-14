@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Map from './map/Map';
 import Create from './create/Create';
@@ -18,16 +18,16 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 import './App.scss';
-import { useEffect } from 'react';
+import './Page.scss';
 
 const App = () => {
   const [page, setPage] = useState(0);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      localStorage.setItem("lat",position.coords.latitude);
-      localStorage.getItem("lng",position.coords.longitude);
+    navigator.geolocation.getCurrentPosition(function (position) {
+      localStorage.setItem('lat', position.coords.latitude);
+      localStorage.getItem('lng', position.coords.longitude);
     });
   },[]);
 
@@ -52,7 +52,7 @@ const App = () => {
   }
 
   const pages = [
-    { title: '🗺️ Map', path: 'map', component: <Map/>, id: 0 },
+    { title: '🗺️ Map', path: 'map', component: <Map />, id: 0 },
     { title: '✒️ Create', path: 'create', component: <Create />, id: 1 },
     { title: '📤 Sent', path: 'sent', component: <Sent />, id: 2 },
     { title: '📬 Recieved', path: 'recieved', component: <Recieved />, id: 3 },
@@ -65,19 +65,23 @@ const App = () => {
         <Navbar />
         <Container fluid className="body">
           <Row>
-            <Col xs={4} className="left-col">
+            <Col xs={3} className="left-col">
               {pages.map(({ title, id }) => (
                 <Button
                   onClick={() => setPage(id)}
-                  style={page !== id ? { background: '#ffffff' } : null}
+                  className={page !== id && 'inactive'}
                 >
-                  <h3 style={page !== id ? { color: '#000000' } : null}>
+                  <h3
+                    style={
+                      page !== id ? { color: '#006cff' } : { color: '#ffffff' }
+                    }
+                  >
                     {title}
                   </h3>
                 </Button>
               ))}
             </Col>
-            <Col xs={8} className="right-col">
+            <Col xs={9} className="right-col">
               {pages[page].component}
             </Col>
           </Row>
