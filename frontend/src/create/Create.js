@@ -57,10 +57,7 @@ const Create = () => {
         setMarkerLat(0);
         setMarkerLng(0);
         setZoom(0);
-        formik.values.amount = 0;
-        formik.values.can_reply = false;
-        formik.values.content = '';
-        formik.values.recipient = '';
+        formik.resetForm();
       });
     },
   });
