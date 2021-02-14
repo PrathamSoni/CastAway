@@ -9,10 +9,12 @@ import './Recieved.scss';
 
 const Recieved = () => {
   const [messages, setMessages] = useState([]);
+  const header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
 
   useEffect(() => {
     Axios.get(
-      'https://castaway-304704.uc.r.appspot.com/api/bottle/recieved'
+      'https://castaway-304704.uc.r.appspot.com/api/bottle/recieved',
+      {headers:header}
     ).then((res) => {
       setMessages(res.data.results);
     });
