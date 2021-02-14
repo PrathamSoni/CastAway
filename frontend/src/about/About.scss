@@ -3,16 +3,20 @@
     font-size: 2.4rem;
   }
 
-  .left-column {
+  .body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  .left-col {
+    border: 1px solid pink;
+    padding-right: 15px;
   }
 
   .right-col {
     display: flex;
     flex-direction: column;
+    border: 1px solid pink;
     .person-col {
       margin-bottom: 1rem;
 
