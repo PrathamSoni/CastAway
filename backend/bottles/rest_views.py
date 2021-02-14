@@ -42,7 +42,7 @@ class BottleViewset(viewsets.ModelViewSet):
             if "lat" in request.query_params.keys():
                 message.lat = request.query_params['lat']
             if "long" in request.query_params.keys():
-                message.lat = request.query_params['long']
+                message.long = request.query_params['long']
             message.save()
         # opened successfully
         serializer = MessageSerializer(message, context={'request': request})
