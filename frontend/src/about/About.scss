@@ -1,9 +1,29 @@
 .about-page {
-}
+  h2 {
+    font-size: 2.4rem;
+  }
 
-.left-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  .body {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .left-col {
+    border: 1px solid pink;
+    padding-right: 15px;
+  }
+
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid pink;
+    .person-col {
+      margin-bottom: 1rem;
+
+      h3 {
+        margin-top: 0.5rem;
+        font-size: 1.4rem;
+      }
+    }
+  }
 }
