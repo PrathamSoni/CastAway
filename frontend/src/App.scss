@@ -13,12 +13,24 @@
     border: 1px solid green;
     height: 80vh;
 
-    .btn-link {
-      width: 80%;
-      margin: 1rem 0;
-    }
     .btn {
-      width: 100%;
+      width: 80%;
+      padding: 1rem 10%;
+      height: 13%;
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: rgba(126, 222, 222, 0.56);
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      &:hover {
+        background: darken(rgba(126, 222, 222, 0.56), 5%);
+      }
+      h3 {
+        transition: 0.15s ease-in-out;
+      }
     }
   }
 

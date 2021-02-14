@@ -19,7 +19,6 @@ import Button from 'react-bootstrap/Button';
 
 import './App.scss';
 
-
 const App = () => {
   const [page, setPage] = useState(0);
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -44,11 +43,11 @@ const App = () => {
   }
 
   const pages = [
-    { title: 'Map', path: 'map', component: <Map />, id: 0 },
-    { title: 'Create', path: 'create', component: <Create />, id: 1 },
-    { title: 'Sent', path: 'sent', component: <Sent />, id: 2 },
-    { title: 'Recieved', path: 'recieved', component: <Recieved />, id: 3 },
-    { title: 'About', path: 'About', component: <About />, id: 4 },
+    { title: '🗺️ Map', path: 'map', component: <Map />, id: 0 },
+    { title: '✒️ Create', path: 'create', component: <Create />, id: 1 },
+    { title: '📤 Sent', path: 'sent', component: <Sent />, id: 2 },
+    { title: '📬 Recieved', path: 'recieved', component: <Recieved />, id: 3 },
+    { title: '🏝️ About', path: 'About', component: <About />, id: 4 },
   ];
 
   return (
@@ -59,8 +58,13 @@ const App = () => {
           <Row>
             <Col xs={4} className="left-col">
               {pages.map(({ title, id }) => (
-                <Button onClick={() => setPage(id)}>
-                  <h3>{title}</h3>
+                <Button
+                  onClick={() => setPage(id)}
+                  style={page !== id ? { background: '#ffffff' } : null}
+                >
+                  <h3 style={page !== id ? { color: '#000000' } : null}>
+                    {title}
+                  </h3>
                 </Button>
               ))}
             </Col>
