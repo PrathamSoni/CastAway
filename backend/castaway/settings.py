@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django_cron',
     'corsheaders',
     'castaway',
+    'authorization',
+
 ]
 
 MIDDLEWARE = [
