@@ -21,7 +21,7 @@ const Recieved = () => {
   const header = { Authorization: `Bearer ${localStorage.getItem('token')}` };
 
   useEffect(() => {
-    Axios.get('https://castaway-304704.uc.r.appspot.com/api/bottle/received', {
+    Axios.get('https://castaway-304704.uc.r.appspot.com/api/bottle/received/', {
       headers: header,
     }).then((res) => {
       setMessages(res.data.results);
@@ -92,7 +92,7 @@ const Recieved = () => {
             <>
               "{message.content}"
               {message.amount > 0.001 && (
-              <p>Amount: {message.amount}, Status: {message.status ? "Delivered":"Failed"}</p>
+              <p>Amount: {message.amount}, Status: {message.status ? "Delivered":"Pending"}</p>
               )}
             </>
           }
