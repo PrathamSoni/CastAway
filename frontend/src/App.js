@@ -18,10 +18,19 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 import './App.scss';
+import { useEffect } from 'react';
 
 const App = () => {
   const [page, setPage] = useState(0);
   const [token, setToken] = useState(localStorage.getItem('token'));
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      localStorage.setItem("lat",position.coords.latitude);
+      localStorage.getItem("lng",position.coords.longitude);
+    });
+  },[]);
+  
   require('dotenv').config();
   if (!token) {
     return (
@@ -43,7 +52,7 @@ const App = () => {
   }
 
   const pages = [
-    { title: '🗺️ Map', path: 'map', component: <Map />, id: 0 },
+    { title: '🗺️ Map', path: 'map', component: <Map/>, id: 0 },
     { title: '✒️ Create', path: 'create', component: <Create />, id: 1 },
     { title: '📤 Sent', path: 'sent', component: <Sent />, id: 2 },
     { title: '📬 Recieved', path: 'recieved', component: <Recieved />, id: 3 },
