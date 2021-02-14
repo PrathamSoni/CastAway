@@ -55,19 +55,16 @@ class BottleViewset(viewsets.ModelViewSet):
                         "amount": message.amount,
                         "description": "Sent with love via Checkbook.io",
                     }
-                    print(BankInfo.objects.all())
                     info = BankInfo.objects.get(user_id=message.sender.email)
-                    print(info)
                     headers = {
                         "Accept": "application/json",
                         "Content-Type": "application/json",
                         "Authorization": "{}:{}".format(info.key, info.secret),
                     }
-                    print(headers)
                     r = requests.request("POST", url, json=payload, headers=headers)
                     status = "Accept" in r.text
                 except:
-                    pass
+                    status = False
 
             message.save()
         # opened successfully
@@ -81,7 +78,7 @@ class BottleViewset(viewsets.ModelViewSet):
 
     def list(self, request):
         page = self.paginator.paginate_queryset(
-            Message.objects.filter(dm=False, opened=False, created__lte=timezone.now() - F('tta')), self.request)
+            Message.objects.exclude(sender=request.user).filter(recipient=None, dm=False, opened=False, created__lte=timezone.now() - F('tta')), self.request)
         if page is not None:
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             data = serializer.data
@@ -126,7 +123,6 @@ class BottleViewset(viewsets.ModelViewSet):
         parent = None
         if "parent" in data.keys() and data["parent"] is not None and data["parent"] != "":
             parent = Message.objects.get(id=data["parent"])
-            print(parent.index)
             if parent.recipient is not None:
                 if request.user != parent.recipient:
                     return HttpResponseBadRequest()
