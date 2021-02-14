@@ -135,6 +135,8 @@ class BottleViewset(viewsets.ModelViewSet):
             if parent.dm:
                 data['can_reply'] = False
             data['dm'] = parent.dm
+            data['long'] = parent.long
+            data['lat'] = parent.lat
 
         else:
             data['can_reply'] = True
