@@ -38,44 +38,45 @@ class BottleViewset(viewsets.ModelViewSet):
             if request.user != message.recipient and request.user != message.sender:
                 return HttpResponseBadRequest()
 
+        status = None
         if request.user != message.sender and not message.opened:
-                message.recipient = request.user
-                if "lat" in request.query_params.keys():
-                    message.lat = request.query_params['lat']
-                if "long" in request.query_params.keys():
-                    message.long = request.query_params['long']
-                message.opened = True
-                if message.amount != 0:
-                    try:
-                        url = "https://api.sandbox.checkbook.io/v3/check/digital"
-                        payload = {
-                            "recipient": request.user.email,
-                            "name": request.user.first_name + " " + request.user.first_name,
-                            "amount": message.amount,
-                            "description": "Sent with love via Checkbook.io",
-                        }
-                        print(BankInfo.objects.all())
-                        info = BankInfo.objects.get(user_id=message.sender.email)
-                        print(info)
-                        headers = {
-                            "Accept": "application/json",
-                            "Content-Type": "application/json",
-                            "Authorization": "{}:{}".format(info.key, info.secret),
-                        }
-                        print(headers)
-                        r = requests.request("POST", url, json=payload, headers=headers)
-                        print(r.text)
-                    except:
-                        pass
+            message.recipient = request.user
+            if "lat" in request.query_params.keys():
+                message.lat = request.query_params['lat']
+            if "long" in request.query_params.keys():
+                message.long = request.query_params['long']
+            message.opened = True
+            if message.amount != 0:
+                try:
+                    url = "https://api.sandbox.checkbook.io/v3/check/digital"
+                    payload = {
+                        "recipient": request.user.email,
+                        "name": request.user.first_name + " " + request.user.first_name,
+                        "amount": message.amount,
+                        "description": "Sent with love via Checkbook.io",
+                    }
+                    print(BankInfo.objects.all())
+                    info = BankInfo.objects.get(user_id=message.sender.email)
+                    print(info)
+                    headers = {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": "{}:{}".format(info.key, info.secret),
+                    }
+                    print(headers)
+                    r = requests.request("POST", url, json=payload, headers=headers)
+                    status = "Accept" in r.text
+                except:
+                    pass
 
-                message.save()
+            message.save()
         # opened successfully
         serializer = MessageSerializer(message, context={'request': request})
 
         data = serializer.data
         if not data["dm"] and request.user != message.sender:
-            data.pop("sender")
-
+            data.pop("sender", None)
+        data['status'] = status
         return Response(data)
 
     def list(self, request):
@@ -85,7 +86,7 @@ class BottleViewset(viewsets.ModelViewSet):
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             data = serializer.data
             for datum in data:
-                datum.pop("content")
+                datum.pop("content", None)
                 datum.pop("sender", None)
             return self.paginator.get_paginated_response(data)
         else:
@@ -111,7 +112,7 @@ class BottleViewset(viewsets.ModelViewSet):
             serializer = MessageSerializer(page, context={'request': request}, many=True)
             data = serializer.data
             for datum in data:
-                datum.pop("sender")
+                datum.pop("sender",None)
             return self.paginator.get_paginated_response(data)
         else:
             return None
