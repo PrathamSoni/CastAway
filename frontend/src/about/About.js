@@ -21,25 +21,25 @@ const About = () => {
       photo: Dev,
       name: 'Devrath Iyer',
       linkedin: 'https://www.linkedin.com/in/devrathiyer/',
-      github: '',
+      github: 'https://github.com/DevrathIyer',
     },
     {
       photo: Samarth,
       name: 'Samarth Goel',
       linkedin: 'https://www.linkedin.com/in/samarth-goel-1047b8187/',
-      github: '',
+      github: 'https://github.com/sgoel97',
     },
     {
       photo: Prath,
       name: 'Pratham Soni',
       linkedin: 'https://www.linkedin.com/in/pratham-soni2002/',
-      github: '',
+      github: 'https://github.com/PrathamSoni/',
     },
     {
       photo: Naomi,
       name: 'Naomi Liu',
       linkedin: 'https://www.linkedin.com/in/samarth-goel-1047b8187/',
-      github: '',
+      github: 'https://github.com/thenaomiliu/',
     },
   ];
 
