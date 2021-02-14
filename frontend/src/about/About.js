@@ -15,10 +15,7 @@ const About = () => {
   return (
     <Container fluid className="about-page page">
       <Row>
-        <h1>CastAway</h1>
-      </Row>
-      <Row>
-        <Col xs={7}>
+        <Col xs={7} className='left-column'>
           <Row>
             <h1 className="heading">About CastAway</h1>
           </Row>
@@ -36,7 +33,7 @@ const About = () => {
             </p>
           </Row>
         </Col>
-        <Col xs={5}>
+        <Col xs={5} className='right-column'>
           <Row>
             <h2 className="sub-heading">The Team</h2>
           </Row>

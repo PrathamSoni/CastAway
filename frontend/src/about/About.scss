@@ -1,2 +1,9 @@
 .about-page {
 }
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
