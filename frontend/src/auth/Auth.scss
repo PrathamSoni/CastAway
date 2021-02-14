@@ -28,6 +28,22 @@
       font-size: 1.5rem;
     }
 
+    .form-col {
+      width: 50%;
+    }
+    .left {
+      padding-right: 2vw;
+    }
+    .right {
+      padding-left: 2vw;
+    }
+
+    .form-row {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 100%;
+    }
+
     .btn {
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
